@@ -3,7 +3,7 @@ from yolo_segmentation import YOLOSEG
 import cvzone
 from tracker import*
 import numpy as np
-ys = YOLOSEG(r"C:\Users\freed\Downloads\best.pt")
+ys = YOLOSEG("best.pt")
 
 my_file = open("coco1.txt", "r")
 data = my_file.read()
@@ -27,9 +27,7 @@ while True:
     ret,frame=cap.read()
     if not ret:
         break
-#    count += 1
-#    if count % 1 != 0:
-#        continue
+
     frame=cv2.resize(frame,(1020,500))
     overlay = frame.copy()
     
