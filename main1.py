@@ -33,13 +33,7 @@ while True:
     
 
     bboxes, classes, segmentations, scores = ys.detect(frame)
-    list=[]
-    for bbox, class_id, seg, score in zip(bboxes, classes, segmentations, scores):
-    # print("bbox:", bbox, "class id:", class_id, "seg:", seg, "score:", score)
-        (x, y, x2, y2) = bbox
-        c=class_list[class_id]
-        list.append([x,y,x2,y2])
-    bbox_idx=tracker.update(list)
+    bbox_idx=tracker.update(bboxes)
     for bbox1,seg1 in zip(bbox_idx,segmentations):
         x3,y3,x4,y4,id=bbox1
         cx=int(x3+x4)//2
